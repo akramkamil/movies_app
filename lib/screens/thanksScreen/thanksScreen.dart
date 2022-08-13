@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movies_app/screens/auth_screen/login.dart';
-class thanksScreen extends StatefulWidget {
-  const thanksScreen({Key? key}) : super(key: key);
+import 'package:movies_app/screens/auth_screen/login_screen.dart';
+class ThanksScreen extends StatefulWidget {
+  const ThanksScreen({Key? key}) : super(key: key);
 
   @override
-  State<thanksScreen> createState() => _thanksScreenState();
+  State<ThanksScreen> createState() => _ThanksScreenState();
 }
 
-class _thanksScreenState extends State<thanksScreen> {
+class _ThanksScreenState extends State<ThanksScreen> {
   @override
   initState(){
     goToNextView();

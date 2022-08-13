@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movies_app/providers/auth_provider.dart';
 import 'package:movies_app/providers/userProvider.dart';
+import 'package:movies_app/screens/auth_screen/login_screen.dart';
 import 'package:movies_app/screens/auth_screen/signup_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -19,10 +20,9 @@ class MoviesApplication extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (ctx) => AuthProvider()),
         ChangeNotifierProvider(create: (ctx) => UserProvider())
-
       ],
-      
       child: GetMaterialApp(
+          routes: {SignUpScreen.namedRoute: (ctx) => const SignUpScreen()},
           title: 'Movies application',
           theme: ThemeData(
             primaryColor: Colors.black,
