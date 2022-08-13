@@ -17,7 +17,7 @@ class UserProvider with ChangeNotifier {
     users = await _us.getAllUsers();
   }
 
-  User? getSellected(String email, String password) {
+  User? getSellectedUser(String email, String password) {
     try{
     for (User u in users){
       if(email == u.email && password == u.password){

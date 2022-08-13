@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:movies_app/providers/auth_provider.dart';
+import 'package:movies_app/providers/general_provider.dart';
+import 'package:movies_app/providers/userProvider.dart';
 import 'package:movies_app/screens/all_movies_screen/all_movies_screen.dart';
 import 'package:movies_app/screens/auth_screen/signup_screen.dart';
 import 'package:provider/provider.dart';
@@ -13,8 +16,15 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   @override
+  initState(){
+    context.read<UserProvider>().getAllUsers();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     var authProvider = context.watch<AuthProvider>();
+    var generalProvider = context.read<GeneralProvider>();
     var emailController = TextEditingController();
     var passwordController = TextEditingController();
     var wrongInsertion = false;
@@ -54,10 +64,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     });
                     return;
                   } else {
+                    generalProvider.selectedUser = context.read<UserProvider>().getSellectedUser(emailController.text, passwordController.text);
                     wrongInsertion = true;
                     // ignore: use_build_context_synchronously
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
                         builder: (cts) => const MoviesScreen()));
+                    print(generalProvider.selectedUser!.username);
                   }
                 },
                 icon: const Icon(Icons.login),

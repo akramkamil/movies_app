@@ -1,17 +1,22 @@
 class Movie {
   final String id;
-  final String name;
+  final String title;
   final String description;
-  final String image1;
-  final String image2;
-  final String image3;
+  final String image;
 
   Movie({
     required this.id,
-    required this.name,
+    required this.title,
     required this.description,
-    required this.image1,
-    required this.image2,
-    required this.image3,
+    required this.image,
   });
+
+  factory Movie.fromJson(Map<String, dynamic> json, String id){
+    return Movie(
+        id: id,
+        title: json['title'],
+        description: json['description'],
+        image: json['image'],
+    );
+  }
 }
